@@ -15,28 +15,21 @@ import java.sql.SQLException;
  */
 public class Polaczenie {
 
-    public static void connect() {
-        Connection conn = null;
+public Connection Connect(){
         try {
-            // db parameters
             String url = "jdbc:sqlite:BazaFilmow";
-            // create a connection to the database
-            conn = DriverManager.getConnection(url);
-
-            System.out.println("Połączenie przebiegło pomyślnie.");
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        } finally {
-            try {
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
+            
+            Class.forName("org.sqlite.JDBC");
+            Connection conn = DriverManager.getConnection(url);
+            return conn;
+        } catch (ClassNotFoundException | SQLException e) {
+           
+            System.out.println("error" + e);
         }
+        return null;
     }
+    
+}
 
     /**
      * @param args the command line arguments
@@ -44,4 +37,4 @@ public class Polaczenie {
 //    public static void main(String[] args) {
 //        connect();
 //    }
-}
+
