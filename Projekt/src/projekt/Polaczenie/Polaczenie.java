@@ -15,7 +15,7 @@ import java.sql.SQLException;
  */
 public class Polaczenie {
 
-public Connection Connect(){
+public static Connection Connect(){
         try {
             String url = "jdbc:sqlite:BazaFilmow";
             

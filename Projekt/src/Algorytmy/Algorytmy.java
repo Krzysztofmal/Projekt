@@ -11,7 +11,7 @@ package Algorytmy;
  */
 public class Algorytmy {
 
-    private static void  AlgorytmKnuthaMorrisaPratta(String wzorzec, String tekst) {
+    public static void  AlgorytmKnuthaMorrisaPratta(String wzorzec, String tekst) {
         int m, n, i, j, t;
         int P[] = new int[100];//maksymalna dlugosc wzorca to 100 symboli
         n = tekst.length();
@@ -47,7 +47,7 @@ public class Algorytmy {
         return;
     }
 
-    private static int AlgorytmMiaryOdleglosciLevenshteina(String wzorzec, String tekst) {
+    public static int AlgorytmMiaryOdleglosciLevenshteina(String wzorzec, String tekst) {
         int i, j, m, n, cost;
         int d[][];
 

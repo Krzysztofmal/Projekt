@@ -5,8 +5,13 @@
  */
 package projekt;
 
+import Algorytmy.Algorytmy;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,17 +34,36 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TextField tfTytul;
     
-    Connection conn;
+
     
     @FXML
-    private void handleButtonAction(ActionEvent event) {
-        //conn = Polaczenie.connect();
+    private void handleButtonAction(ActionEvent event) throws SQLException {
+        Connection conn = Polaczenie.Connect();
+        
+        
+        Statement ps = conn.createStatement();
+        ResultSet rs = ps.executeQuery("SELECT * FROM film;");
         
         
         
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+        while (rs.next()){
+            if (Algorytmy.AlgorytmMiaryOdleglosciLevenshteina(rs.getString("tytuł"), tfTytul.getText()) < 3){
+                System.out.println(rs.getString("tytuł"));
+            }
+            
+            
+            
+        }
         
+        
+        //System.out.println("You clicked me!");
+        //label.setText("Hello World!");
+        
+        
+        
+        ps.close();
+        rs.close();
+        conn.close();
     }
     
     @Override
