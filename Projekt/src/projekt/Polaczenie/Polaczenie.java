@@ -5,8 +5,7 @@
  */
 package projekt.Polaczenie;
 
-
-    import java.sql.Connection;
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -15,7 +14,6 @@ import java.sql.SQLException;
  * @author jkero
  */
 public class Polaczenie {
-    
 
     public static void connect() {
         Connection conn = null;
@@ -24,9 +22,9 @@ public class Polaczenie {
             String url = "jdbc:sqlite:BazaFilmow";
             // create a connection to the database
             conn = DriverManager.getConnection(url);
-            
+
             System.out.println("Połączenie przebiegło pomyślnie.");
-            
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } finally {
@@ -39,13 +37,11 @@ public class Polaczenie {
             }
         }
     }
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        connect();
-    }
+//    public static void main(String[] args) {
+//        connect();
+//    }
 }
-    
-    
-
