@@ -50,8 +50,10 @@ public class FXMLDocumentController implements Initializable {
             if (Algorytmy.AlgorytmMiaryOdleglosciLevenshteina(rs.getString("tytuł"), tfTytul.getText()) < 3){
                 System.out.println(rs.getString("tytuł"));
             }
-            
-            
+            Algorytmy.AlgorytmKnuthaMorrisaPratta(rs.getString("tytuł"), tfTytul.getText());
+            if ( Algorytmy.AlgorytmKnuthaMorrisaPratta(rs.getString("tytuł"), tfTytul.getText()) == 1 ) {
+                System.out.println("Morrisa Pratta : " + rs.getString("tytuł"));
+            }
             
         }
         

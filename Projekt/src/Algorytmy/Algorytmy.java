@@ -11,7 +11,7 @@ package Algorytmy;
  */
 public class Algorytmy {
 
-    public static void  AlgorytmKnuthaMorrisaPratta(String wzorzec, String tekst) {
+    public static int  AlgorytmKnuthaMorrisaPratta(String wzorzec, String tekst) {
         int m, n, i, j, t;
         int P[] = new int[100];//maksymalna dlugosc wzorca to 100 symboli
         n = tekst.length();
@@ -30,7 +30,7 @@ public class Algorytmy {
             }
             P[j] = t;
         }
-
+        int z;
 //      algorytm KMP
         i = 1;
         j = 0;
@@ -41,10 +41,11 @@ public class Algorytmy {
             }
             if (j == m) {
                 System.out.println(i);
+                z = i;
             }
             i = i + Math.max(1, j - P[j]);
         }
-        return;
+        return i;
     }
 
     public static int AlgorytmMiaryOdleglosciLevenshteina(String wzorzec, String tekst) {
