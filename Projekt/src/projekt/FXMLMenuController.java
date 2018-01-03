@@ -51,7 +51,7 @@ public class FXMLMenuController implements Initializable {
         Stage stage;
         Parent root;
 
-        if (event.getSource() == bPanelAdmina) {
+       
             stage = new Stage();
             root = FXMLLoader.load(getClass().getResource("PanelAdministratora/FXMLPanelAdministratora.fxml"));
             stage.setScene(new Scene(root));
@@ -59,7 +59,7 @@ public class FXMLMenuController implements Initializable {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(bPanelAdmina.getScene().getWindow());
             stage.showAndWait();
-        } 
+        
     }
 
     @FXML
@@ -68,7 +68,6 @@ public class FXMLMenuController implements Initializable {
         Stage stage;
         Parent root;
 
-        if (event.getSource() == bWyszukiwarka) {
             stage = new Stage();
             root = FXMLLoader.load(getClass().getResource("Wyszukiwarka/FXMLWyszukiwarka.fxml"));
             stage.setScene(new Scene(root));
@@ -76,7 +75,7 @@ public class FXMLMenuController implements Initializable {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(bWyszukiwarka.getScene().getWindow());
             stage.showAndWait();
-        } 
+        
     }
 
     @FXML
