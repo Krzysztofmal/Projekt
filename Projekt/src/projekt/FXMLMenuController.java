@@ -46,26 +46,37 @@ public class FXMLMenuController implements Initializable {
     }    
 
     
-    // MENU trzeba zablokować gdy panel admina lub wyszukiwarka są otwarte
-    
     @FXML
     private void przejdzDoPaneluAdmina(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PanelAdministratora/FXMLPanelAdministratora.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root1));
-        stage.setTitle("Panel administratora");
-        stage.show();
+        Stage stage;
+        Parent root;
+
+        if (event.getSource() == bPanelAdmina) {
+            stage = new Stage();
+            root = FXMLLoader.load(getClass().getResource("PanelAdministratora/FXMLPanelAdministratora.fxml"));
+            stage.setScene(new Scene(root));
+            stage.setTitle("Panel administratora");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initOwner(bPanelAdmina.getScene().getWindow());
+            stage.showAndWait();
+        } 
     }
 
     @FXML
     private void przejdzDoWyszukiwarki(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Wyszukiwarka/FXMLWyszukiwarka.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();        
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root1));  
-        stage.setTitle("Wyszukiwarka");
-        stage.show();
+        
+        Stage stage;
+        Parent root;
+
+        if (event.getSource() == bWyszukiwarka) {
+            stage = new Stage();
+            root = FXMLLoader.load(getClass().getResource("Wyszukiwarka/FXMLWyszukiwarka.fxml"));
+            stage.setScene(new Scene(root));
+            stage.setTitle("Wyszukiwarka");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initOwner(bWyszukiwarka.getScene().getWindow());
+            stage.showAndWait();
+        } 
     }
 
     @FXML
