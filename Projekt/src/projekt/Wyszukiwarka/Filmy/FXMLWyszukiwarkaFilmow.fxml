@@ -6,22 +6,26 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="480.0" prefWidth="640.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projekt.Wyszukiwarka.Filmy.FXMLWyszukiwarkaFilmowController">
     <stylesheets>
         <URL value="@fxmlwyszukiwarkafilmow.css" />
     </stylesheets>
    <children>
-      <JFXTextField labelFloat="true" layoutX="59.0" layoutY="36.0" promptText="Tytuł filmu" />
-      <TableView layoutX="44.0" layoutY="108.0" prefHeight="207.0" prefWidth="559.0">
+      <JFXTextField fx:id="tfTytul" labelFloat="true" layoutX="59.0" layoutY="36.0" promptText="Tytuł filmu" />
+      <TableView fx:id="tableFilmy" layoutX="44.0" layoutY="108.0" prefHeight="207.0" prefWidth="559.0">
         <columns>
-          <TableColumn prefWidth="158.0" text="Tytuł" />
-          <TableColumn prefWidth="133.0" text="Reżyser" />
-            <TableColumn prefWidth="69.0" text="Długość" />
-            <TableColumn prefWidth="129.0" text="Kategoria" />
-            <TableColumn prefWidth="65.0" text="Ocena" />
+          <TableColumn fx:id="columnTytul" prefWidth="158.0" text="Tytuł" />
+          <TableColumn fx:id="columnRezyser" prefWidth="133.0" text="Reżyser" />
+            <TableColumn fx:id="columnDlugosc" prefWidth="69.0" text="Długość" />
+            <TableColumn fx:id="columnKategoria" prefWidth="129.0" text="Kategoria" />
+            <TableColumn fx:id="columnOcena" prefWidth="65.0" text="Ocena" />
         </columns>
       </TableView>
-      <JFXButton fx:id="bSzczegoly" layoutX="75.0" layoutY="355.0" onAction="#szczegoly" prefHeight="60.0" prefWidth="150.0" text="Szczegóły filmu" />
+      <JFXButton fx:id="bSzczegoly" layoutX="249.0" layoutY="362.0" onAction="#szczegoly" prefHeight="60.0" prefWidth="150.0" text="Szczegóły filmu">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font></JFXButton>
    </children>
 </AnchorPane>

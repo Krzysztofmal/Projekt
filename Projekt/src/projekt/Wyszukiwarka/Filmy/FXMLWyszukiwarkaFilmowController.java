@@ -6,6 +6,7 @@
 package projekt.Wyszukiwarka.Filmy;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,8 +16,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import projekt.Model.Film;
 
 /**
  * FXML Controller class
@@ -27,6 +31,20 @@ public class FXMLWyszukiwarkaFilmowController implements Initializable {
 
     @FXML
     private JFXButton bSzczegoly;
+    @FXML
+    private JFXTextField tfTytul;
+    @FXML
+    private TableView<Film> tableFilmy;
+    @FXML
+    private TableColumn<Film, String> columnTytul;
+    @FXML
+    private TableColumn<Film, String> columnRezyser;
+    @FXML
+    private TableColumn<Film, Integer> columnDlugosc;
+    @FXML
+    private TableColumn<Film, String> columnKategoria;
+    @FXML
+    private TableColumn<Film, ?> columnOcena;
 
     /**
      * Initializes the controller class.

@@ -26,7 +26,7 @@ public class FXMLOcenaController implements Initializable {
     @FXML
     private JFXButton bAnuluj;
     @FXML
-    private JFXComboBox<?> cbOcena;
+    private JFXComboBox<String> cbOcena;
 
     /**
      * Initializes the controller class.
@@ -34,11 +34,25 @@ public class FXMLOcenaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+        cbOcena.getItems().addAll(
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10"
+        );        
+        cbOcena.setStyle("-fx-font: 18px \"System\";");
+        
+    }
 
     @FXML
     private void ocen(ActionEvent event) {
-        
+
     }
 
     @FXML
@@ -46,5 +60,5 @@ public class FXMLOcenaController implements Initializable {
         Stage stage = (Stage) bAnuluj.getScene().getWindow();
         stage.close();
     }
-    
+
 }

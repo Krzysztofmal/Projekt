@@ -12,22 +12,22 @@
         <URL value="@fxmlwyszukiwarkaaktorow.css" />
     </stylesheets>
    <children>
-      <JFXTextField labelFloat="true" layoutX="105.0" layoutY="46.0" prefHeight="25.0" prefWidth="213.0" promptText="imię i/lub nazwisko aktora" />
-      <TableView layoutX="37.0" layoutY="94.0" prefHeight="135.0" prefWidth="584.0">
+      <JFXTextField fx:id="tfAktor" labelFloat="true" layoutX="105.0" layoutY="46.0" prefHeight="25.0" prefWidth="213.0" promptText="imię i/lub nazwisko aktora" />
+      <TableView fx:id="tableAktorzy" layoutX="37.0" layoutY="94.0" prefHeight="135.0" prefWidth="584.0">
         <columns>
-          <TableColumn prefWidth="106.0" text="Imię" />
-          <TableColumn prefWidth="104.0" text="Nazwisko" />
-            <TableColumn prefWidth="94.0" text="Data urodzenia" />
-            <TableColumn prefWidth="277.0" text="Ngrody" />
+          <TableColumn fx:id="columnImie" prefWidth="106.0" text="Imię" />
+          <TableColumn fx:id="columnNazwisko" prefWidth="104.0" text="Nazwisko" />
+            <TableColumn fx:id="columnData" prefWidth="94.0" text="Data urodzenia" />
+            <TableColumn fx:id="columnNagrody" prefWidth="277.0" text="Nagrody" />
         </columns>
       </TableView>
-      <TableView layoutX="37.0" layoutY="314.0" prefHeight="135.0" prefWidth="584.0">
+      <TableView fx:id="tableFilmy" layoutX="37.0" layoutY="314.0" prefHeight="135.0" prefWidth="584.0">
         <columns>
-          <TableColumn prefWidth="149.0" text="Tytuł" />
-          <TableColumn prefWidth="141.0" text="Reżyser" />
-            <TableColumn prefWidth="72.0" text="Długość" />
-            <TableColumn prefWidth="142.0" text="Kategoria" />
-            <TableColumn prefWidth="75.0" text="Ocena" />
+          <TableColumn fx:id="columnTytul" prefWidth="149.0" text="Tytuł" />
+          <TableColumn fx:id="columnRezyser" prefWidth="141.0" text="Reżyser" />
+            <TableColumn fx:id="columnDlugosc" prefWidth="72.0" text="Długość" />
+            <TableColumn fx:id="columnKategoria" prefWidth="142.0" text="Kategoria" />
+            <TableColumn fx:id="columnOcena" prefWidth="75.0" text="Ocena" />
         </columns>
       </TableView>
       <Label layoutX="37.0" layoutY="266.0" prefHeight="17.0" prefWidth="201.0" text="Filmy, w których aktor wziął udział :" />

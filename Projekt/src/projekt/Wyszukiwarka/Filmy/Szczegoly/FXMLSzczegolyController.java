@@ -15,9 +15,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import projekt.Model.Aktor;
 
 /**
  * FXML Controller class
@@ -28,6 +32,18 @@ public class FXMLSzczegolyController implements Initializable {
 
     @FXML
     private JFXButton bOcen;
+    @FXML
+    private TableView<Aktor> tableAktorzy;
+    @FXML
+    private TableColumn<Aktor, String> columnImie;
+    @FXML
+    private TableColumn<Aktor, String> columnNazwisko;
+    @FXML
+    private TableColumn<Aktor, String> columnData;
+    @FXML
+    private TableColumn<Aktor, ?> columnNagrody;
+    @FXML
+    private Label lOpis;
 
     /**
      * Initializes the controller class.
