@@ -5,14 +5,20 @@
  */
 package projekt.PanelAdministratora;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -20,6 +26,7 @@ import javafx.scene.input.MouseEvent;
  * @author BlackHawk
  */
 public class FXMLPanelAdministratoraController implements Initializable {
+
     @FXML
     private Button btnExit;
     @FXML
@@ -41,14 +48,27 @@ public class FXMLPanelAdministratoraController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-
-    @FXML
-    private void PressedExit(MouseEvent event) {
     }
 
     @FXML
-    private void PressedAdd(MouseEvent event) {
+    private void PressedExit(MouseEvent event) {
+        Stage stage = (Stage) btnExit.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void PressedAdd(MouseEvent event) throws IOException {
+        Stage stage;
+        Parent root;
+
+        stage = new Stage();
+        root = FXMLLoader.load(getClass().getResource("FXMLDodajFilm.fxml"));
+        stage.setScene(new Scene(root));
+        stage.setTitle("Dodawanie Filmu");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(btnAdd.getScene().getWindow());
+        stage.showAndWait();
+
     }
 
     @FXML
@@ -58,5 +78,5 @@ public class FXMLPanelAdministratoraController implements Initializable {
     @FXML
     private void PressedDelete(MouseEvent event) {
     }
-    
+
 }
