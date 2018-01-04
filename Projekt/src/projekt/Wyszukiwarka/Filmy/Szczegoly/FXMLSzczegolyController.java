@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projekt.Wyszukiwarka.Filmy;
+package projekt.Wyszukiwarka.Filmy.Szczegoly;
 
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
@@ -17,16 +17,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
  *
  * @author BlackHawk
  */
-public class FXMLWyszukiwarkaFilmowController implements Initializable {
+public class FXMLSzczegolyController implements Initializable {
 
     @FXML
-    private JFXButton bSzczegoly;
+    private JFXButton bOcen;
 
     /**
      * Initializes the controller class.
@@ -37,19 +38,18 @@ public class FXMLWyszukiwarkaFilmowController implements Initializable {
     }    
 
     @FXML
-    private void szczegoly(ActionEvent event) throws IOException {
-        
-        //odblokowac gdy zostanie wybrany jakiś film
+    private void ocen(ActionEvent event) throws IOException {
         
         Stage stage;
             Parent root;
 
             stage = new Stage();
-            root = FXMLLoader.load(getClass().getResource("Szczegoly/FXMLSzczegoly.fxml"));
+            root = FXMLLoader.load(getClass().getResource("FXMLOcena.fxml"));
             stage.setScene(new Scene(root));
-            stage.setTitle("Wyszukiwarka filmów");
+            stage.setTitle("Oceń film");
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initOwner(bSzczegoly.getScene().getWindow());
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.initOwner(bOcen.getScene().getWindow());
             stage.showAndWait();
     }
     
