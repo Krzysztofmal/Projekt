@@ -63,6 +63,12 @@ public class FXMLDodajFilmController implements Initializable {
 
     @FXML
     private void PressedAddNew(MouseEvent event) {
+        String tytul = txTytulFilmu.getText();
+        String rezyser = txRezyser.getText();
+        String d = txDlFilmu.getText();
+        int dl_filmu = Integer.parseInt(d);
+        String gatunek = cbGatunek.getValue();
+        System.out.println(tytul +" "+rezyser +" "+dl_filmu +" "+gatunek +" ");
 
     }
 
