@@ -34,23 +34,22 @@ public class FXMLWyszukiwarkaFilmowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void szczegoly(ActionEvent event) throws IOException {
-        
-        //odblokowac gdy zostanie wybrany jakiś film
-        
-        Stage stage;
-            Parent root;
 
-            stage = new Stage();
-            root = FXMLLoader.load(getClass().getResource("Szczegoly/FXMLSzczegoly.fxml"));
-            stage.setScene(new Scene(root));
-            stage.setTitle("Wyszukiwarka filmów");
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initOwner(bSzczegoly.getScene().getWindow());
-            stage.showAndWait();
+        //odblokowac gdy zostanie wybrany jakiś film
+        Stage stage;
+        Parent root;
+
+        stage = new Stage();
+        root = FXMLLoader.load(getClass().getResource("Szczegoly/FXMLSzczegoly.fxml"));
+        stage.setScene(new Scene(root));
+        stage.setTitle("Wyszukiwarka filmów");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(bSzczegoly.getScene().getWindow());
+        stage.showAndWait();
     }
-    
+
 }
