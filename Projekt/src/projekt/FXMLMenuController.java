@@ -19,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.Window;
 
 /**
@@ -27,7 +28,7 @@ import javafx.stage.Window;
  * @author BlackHawk
  */
 public class FXMLMenuController implements Initializable {
-
+    
     @FXML
     private JFXButton bPanelAdmina;
     @FXML
@@ -42,42 +43,40 @@ public class FXMLMenuController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-        
     }    
-
     
     @FXML
     private void przejdzDoPaneluAdmina(ActionEvent event) throws IOException {
         Stage stage;
         Parent root;
-
-       
-            stage = new Stage();
-            root = FXMLLoader.load(getClass().getResource("PanelAdministratora/FXMLPanelAdministratora.fxml"));
-            stage.setScene(new Scene(root));
-            stage.setTitle("Panel administratora");
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initOwner(bPanelAdmina.getScene().getWindow());
-            stage.showAndWait();
+        
+        stage = new Stage();
+        root = FXMLLoader.load(getClass().getResource("PanelAdministratora/FXMLPanelAdministratora.fxml"));
+        stage.setScene(new Scene(root));
+        stage.setTitle("Panel administratora");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(bPanelAdmina.getScene().getWindow());
+        stage.showAndWait();
         
     }
-
+    
     @FXML
     private void przejdzDoWyszukiwarki(ActionEvent event) throws IOException {
         
         Stage stage;
         Parent root;
-
-            stage = new Stage();
-            root = FXMLLoader.load(getClass().getResource("Wyszukiwarka/FXMLWyszukiwarka.fxml"));
-            stage.setScene(new Scene(root));
-            stage.setTitle("Wyszukiwarka");
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initOwner(bWyszukiwarka.getScene().getWindow());
-            stage.showAndWait();
+        
+        stage = new Stage();
+        root = FXMLLoader.load(getClass().getResource("Wyszukiwarka/FXMLWyszukiwarka.fxml"));
+        stage.setScene(new Scene(root));
+        stage.setTitle("Wyszukiwarka");
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(bWyszukiwarka.getScene().getWindow());
+        stage.showAndWait();
         
     }
-
+    
     @FXML
     private void wyjscie(ActionEvent event) {
         System.exit(0);

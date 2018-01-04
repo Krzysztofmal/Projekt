@@ -1,14 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projekt.Wyszukiwarka.FXMLWyszukiwarkaController">
+<AnchorPane id="AnchorPane" prefHeight="250.0" prefWidth="400.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projekt.Wyszukiwarka.FXMLWyszukiwarkaController">
     <stylesheets>
-        <URL value="@fxmlwyszukiwarka.css"/>
+        <URL value="@fxmlwyszukiwarka.css" />
     </stylesheets>
+   <children>
+      <JFXButton fx:id="bWybierz" layoutX="51.0" layoutY="192.0" minHeight="40.0" minWidth="100.0" onAction="#wybierz" text="Wybierz" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="50.0">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="bAnuluj" layoutX="231.0" layoutY="192.0" minHeight="40.0" minWidth="100.0" onAction="#anuluj" text="Anuluj" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="50.0">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="22.0" layoutY="21.0" text="Wybierz wyszukiwarkę, którą chcesz uruchomić">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <JFXRadioButton fx:id="radioFilmy" layoutX="81.0" layoutY="84.0" selected="true" text="Wyszukiwarka filmów">
+         <toggleGroup>
+            <ToggleGroup fx:id="wybor" />
+         </toggleGroup>
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="radioAktorzy" layoutX="81.0" layoutY="125.0" text="Wyszukiwarka aktorów" toggleGroup="$wybor">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXRadioButton>
+   </children>
 </AnchorPane>
