@@ -55,6 +55,7 @@ public class FXMLPanelAdministratoraController implements Initializable {
     @FXML
     private TableColumn<String, Config> colGatunek;
     private ObservableList<Config> data;
+
     /**
      * Initializes the controller class.
      */
@@ -66,11 +67,8 @@ public class FXMLPanelAdministratoraController implements Initializable {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM Film");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                data.add(new Config(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4),rs.getString(3)));
+                data.add(new Config(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(3)));
             }
-            con.close();
-            ps.close();
-            rs.close();
 
         } catch (SQLException ex) {
             Logger.getLogger(FXMLPanelAdministratoraController.class.getName()).log(Level.SEVERE, null, ex);
@@ -84,6 +82,7 @@ public class FXMLPanelAdministratoraController implements Initializable {
         tableAll.setItems(data);
 
     }
+
     @FXML
     private void PressedExit(MouseEvent event) {
         Stage stage = (Stage) btnExit.getScene().getWindow();
