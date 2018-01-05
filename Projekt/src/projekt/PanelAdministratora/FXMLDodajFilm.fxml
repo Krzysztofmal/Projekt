@@ -6,9 +6,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="415.0" prefWidth="314.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projekt.PanelAdministratora.FXMLDodajFilmController">
+<AnchorPane id="AnchorPane" prefHeight="389.0" prefWidth="267.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projekt.PanelAdministratora.FXMLDodajFilmController">
    <children>
-      <Button fx:id="btnExit" layoutX="212.0" layoutY="355.0" mnemonicParsing="false" onMousePressed="#PressedExit" prefHeight="41.0" prefWidth="86.0" text="Wyjście" />
       <Label layoutX="63.0" layoutY="40.0" text="Tytuł filmu:" />
       <Label layoutX="63.0" layoutY="101.0" text="Imię i nazwisko reżysera:" />
       <Label layoutX="63.0" layoutY="161.0" text="Długość filmu:" />
@@ -17,6 +16,6 @@
       <TextField fx:id="txRezyser" layoutX="63.0" layoutY="118.0" />
       <TextField fx:id="txDlFilmu" layoutX="63.0" layoutY="178.0" />
       <ComboBox fx:id="cbGatunek" layoutX="63.0" layoutY="241.0" prefWidth="150.0" />
-      <Button fx:id="btnAddNew" layoutX="73.0" layoutY="284.0" mnemonicParsing="false" onMousePressed="#PressedAddNew" prefHeight="55.0" prefWidth="130.0" text="Dodaj nowy film" />
+      <Button fx:id="btnAddNew" layoutX="74.0" layoutY="301.0" mnemonicParsing="false" onMousePressed="#PressedAddNew" prefHeight="55.0" prefWidth="130.0" text="Dodaj nowy film" />
    </children>
 </AnchorPane>

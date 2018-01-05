@@ -21,9 +21,6 @@ import javafx.stage.Stage;
  * @author Łukasz
  */
 public class FXMLDodajFilmController implements Initializable {
-
-    @FXML
-    private Button btnExit;
     @FXML
     private TextField txTytulFilmu;
     @FXML
@@ -52,13 +49,6 @@ public class FXMLDodajFilmController implements Initializable {
                 "Thriller",
                 "Western"
         );
-        // TODO
-    }
-
-    @FXML
-    private void PressedExit(MouseEvent event) {
-        Stage stage = (Stage) btnExit.getScene().getWindow();
-        stage.close();
     }
 
     @FXML
@@ -68,8 +58,9 @@ public class FXMLDodajFilmController implements Initializable {
         String d = txDlFilmu.getText();
         int dl_filmu = Integer.parseInt(d);
         String gatunek = cbGatunek.getValue();
-        System.out.println(tytul +" "+rezyser +" "+dl_filmu +" "+gatunek +" ");
-
+        System.out.println(tytul + " " + rezyser + " " + dl_filmu + " " + gatunek + " ");
+        Stage stage = (Stage) btnAddNew.getScene().getWindow();
+        stage.close();
     }
 
 }
