@@ -47,8 +47,6 @@ public class FXMLPanelAdministratoraController implements Initializable {
     @FXML
     private Button btnAdd;
     @FXML
-    private Button btnUpdate;
-    @FXML
     private Button btnDelete;
     @FXML
     private TableColumn<String, Config> colDlugosc;
@@ -66,7 +64,7 @@ public class FXMLPanelAdministratoraController implements Initializable {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM Film");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                data.add(new Config(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(3)));
+                data.add(new Config(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5)));
             }
 
         } catch (SQLException ex) {
@@ -128,9 +126,6 @@ public class FXMLPanelAdministratoraController implements Initializable {
             }
         }
 
-    }
-        @FXML
-    private void PressedUpdate(MouseEvent event) {
     }
 
     }

@@ -33,8 +33,7 @@
         </columns>
       </TableView>
       <Button fx:id="btnAdd" layoutX="146.0" layoutY="415.0" mnemonicParsing="false" onMousePressed="#PressedAdd" prefHeight="50.0" prefWidth="116.0" text="Dodaj film" />
-      <Button fx:id="btnUpdate" layoutX="25.0" layoutY="329.0" mnemonicParsing="false" onMousePressed="#PressedUpdate" prefHeight="50.0" prefWidth="147.0" text="Aktualizuj wybrany film" />
-      <Button fx:id="btnDelete" layoutX="215.0" layoutY="329.0" mnemonicParsing="false" onMousePressed="#PressedDelete" prefHeight="50.0" prefWidth="147.0" text="Usuń wybrany film" />
+      <Button fx:id="btnDelete" layoutX="130.0" layoutY="336.0" mnemonicParsing="false" onMousePressed="#PressedDelete" prefHeight="50.0" prefWidth="147.0" text="Usuń wybrany film" />
       <Label layoutX="2.0" layoutY="68.0" text="oraz usuwać wybrane filmy.">
          <font>
             <Font size="18.0" />
