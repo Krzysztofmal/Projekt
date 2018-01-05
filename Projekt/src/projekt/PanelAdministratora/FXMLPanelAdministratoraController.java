@@ -59,8 +59,7 @@ public class FXMLPanelAdministratoraController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void Refresh(){
         try {
             Connection con = projekt.Polaczenie.Polaczenie.Connect();
             data = FXCollections.observableArrayList();
@@ -80,7 +79,12 @@ public class FXMLPanelAdministratoraController implements Initializable {
 
         tableAll.setItems(null);
         tableAll.setItems(data);
-
+    
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        Refresh();
+        
     }
 
     @FXML
@@ -100,16 +104,34 @@ public class FXMLPanelAdministratoraController implements Initializable {
         stage.setTitle("Dodawanie Filmu");
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(btnAdd.getScene().getWindow());
-        stage.showAndWait();
+        stage.show();
+        
+        
 
-    }
-
-    @FXML
-    private void PressedUpdate(MouseEvent event) {
     }
 
     @FXML
     private void PressedDelete(MouseEvent event) {
+    
+        if (tableAll.getSelectionModel().getSelectedItem() == null) {
+            projekt.Projekt.Alert("NIE WYBRANO FILMU", "Proszę wybrać film do usunięcia.");
+        } else {
+            try {
+
+                Connection con = projekt.Polaczenie.Polaczenie.Connect();
+                int rs = con.createStatement().executeUpdate("delete from Film where id_filmu = " + tableAll.getSelectionModel().getSelectedItem().getId_filmu());
+                
+                Refresh();
+                con.close();
+            } catch (SQLException e) {
+                System.err.println("ERROR" + e);
+            }
+        }
+
+    }
+        @FXML
+    private void PressedUpdate(MouseEvent event) {
     }
 
-}
+    }
+
