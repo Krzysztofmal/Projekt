@@ -19,6 +19,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -53,11 +54,13 @@ public class FXMLPanelAdministratoraController implements Initializable {
     @FXML
     private TableColumn<String, Config> colGatunek;
     private ObservableList<Config> data;
+    @FXML
+    private Button btnAktorzy;
 
     /**
      * Initializes the controller class.
      */
-    public void Refresh(){
+    public void Refresh() {
         try {
             Connection con = projekt.Polaczenie.Polaczenie.Connect();
             data = FXCollections.observableArrayList();
@@ -77,12 +80,13 @@ public class FXMLPanelAdministratoraController implements Initializable {
 
         tableAll.setItems(null);
         tableAll.setItems(data);
-    
+
     }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Refresh();
-        
+
     }
 
     @FXML
@@ -93,24 +97,20 @@ public class FXMLPanelAdministratoraController implements Initializable {
 
     @FXML
     private void PressedAdd(MouseEvent event) throws IOException {
-        Stage stage;
-        Parent root;
-
-        stage = new Stage();
-        root = FXMLLoader.load(getClass().getResource("FXMLDodajFilm.fxml"));
-        stage.setScene(new Scene(root));
-        stage.setTitle("Dodawanie Filmu");
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(btnAdd.getScene().getWindow());
-        stage.show();
-        
-        
-
+            Parent tabela = FXMLLoader.load(getClass().getResource("FXMLDodajFilm.fxml"));
+            Scene zamowienie = new Scene(tabela);
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(zamowienie);
+            stage.show();
+            stage.setTitle("Dodawanie nowego filmu");
+            Stage okienko = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            okienko.close();
     }
 
     @FXML
     private void PressedDelete(MouseEvent event) {
-    
+
         if (tableAll.getSelectionModel().getSelectedItem() == null) {
             projekt.Projekt.Alert("NIE WYBRANO FILMU", "Proszę wybrać film do usunięcia.");
         } else {
@@ -118,7 +118,7 @@ public class FXMLPanelAdministratoraController implements Initializable {
 
                 Connection con = projekt.Polaczenie.Polaczenie.Connect();
                 int rs = con.createStatement().executeUpdate("delete from Film where id_filmu = " + tableAll.getSelectionModel().getSelectedItem().getId_filmu());
-                
+
                 Refresh();
                 con.close();
             } catch (SQLException e) {
@@ -128,5 +128,8 @@ public class FXMLPanelAdministratoraController implements Initializable {
 
     }
 
+    @FXML
+    private void PressedAktorzy(MouseEvent event) {
     }
 
+}

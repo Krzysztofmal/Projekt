@@ -15,6 +15,7 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -22,6 +23,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -73,8 +75,15 @@ public class FXMLDodajFilmController implements Initializable {
                 con.createStatement().executeUpdate("INSERT INTO Film(tytuł,rezyser, dlugosc_filmu, gatunek) Values " + "('"
                         + txTytulFilmu.getText() + "','" + txRezyser.getText() + "','" + txDlFilmu.getText() + "','" + cbGatunek.getValue() + "')");
                 con.close();
-                Stage stage = (Stage) btnAddNew.getScene().getWindow();
-                stage.close();
+            Parent tabela = FXMLLoader.load(getClass().getResource("FXMLPanelAdministratora.fxml"));
+            Scene zamowienie = new Scene(tabela);
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(zamowienie);
+            stage.show();
+            stage.setTitle("Panel Administratora");
+            Stage okienko = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            okienko.close();
                 
             }
         } catch (SQLException e) {

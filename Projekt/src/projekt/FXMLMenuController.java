@@ -51,7 +51,7 @@ public class FXMLMenuController implements Initializable {
         Parent root;
         
         stage = new Stage();
-        root = FXMLLoader.load(getClass().getResource("PanelAdministratora/FXMLPanelAdministratora.fxml"));
+        root = FXMLLoader.load(getClass().getResource("PanelAdministratora/FXMLLogowanieAdmin.fxml"));
         stage.setScene(new Scene(root));
         stage.setTitle("Panel administratora");
         stage.initModality(Modality.APPLICATION_MODAL);
