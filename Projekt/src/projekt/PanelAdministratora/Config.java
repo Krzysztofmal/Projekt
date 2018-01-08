@@ -21,13 +21,15 @@ public class Config {
     private final StringProperty rezyser;
     private final IntegerProperty dlugosc_filmu;
     private final StringProperty gatunek;
+    private final StringProperty opis;
 
-    public Config(int id_filmu, String tytul, String rezyser, int dlugosc_filmu, String gatunek) {
+    public Config(int id_filmu, String tytul, String rezyser, int dlugosc_filmu, String gatunek,String opis) {
         this.id_filmu = new SimpleIntegerProperty(id_filmu);
         this.tytul = new SimpleStringProperty(tytul);
         this.rezyser = new SimpleStringProperty(rezyser);
         this.dlugosc_filmu = new SimpleIntegerProperty(dlugosc_filmu);
         this.gatunek = new SimpleStringProperty(gatunek);
+        this.opis = new SimpleStringProperty(opis);
 
     }
 
@@ -52,6 +54,9 @@ public class Config {
     public String getGatunek() {
         return gatunek.get();
     }
+    public String getOpis(){
+        return opis.get();
+    }
 
     //setters
     
@@ -74,6 +79,9 @@ public class Config {
     public void setGatunek(String value) {
         gatunek.set(value);
     }
+    public void setOpis(String value){
+        opis.set(value);
+    }
 
     //property
     
@@ -95,6 +103,9 @@ public class Config {
 
     public StringProperty gatunek() {
         return gatunek;
+    }
+    public StringProperty Opis(){
+        return opis;
     }
 
 }

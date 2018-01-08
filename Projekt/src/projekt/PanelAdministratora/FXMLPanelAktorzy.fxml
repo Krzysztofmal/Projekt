@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="432.0" prefWidth="544.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="projekt.PanelAdministratora.FXMLPanelAktorzyController">
+   <children>
+      <Label layoutX="44.0" layoutY="26.0" prefHeight="17.0" prefWidth="72.0" text="Opis filmu:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lOpis" layoutX="44.0" layoutY="51.0" prefHeight="104.0" prefWidth="414.0" />
+      <Label layoutX="44.0" layoutY="183.0" prefHeight="27.0" prefWidth="212.0" text="Aktorzy grający w tym filmie:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tableAktorzy" layoutX="44.0" layoutY="216.0" prefHeight="131.0" prefWidth="471.0">
+        <columns>
+          <TableColumn fx:id="colImie" prefWidth="126.0" text="Imię/Imiona" />
+          <TableColumn fx:id="colNazwisko" prefWidth="125.0" text="Nazwisko" />
+            <TableColumn fx:id="colDataUr" prefWidth="108.0" text="Data urodzenia" />
+            <TableColumn fx:id="colNagrody" prefWidth="110.0" text="Nagrody" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="btnDodajAktora" layoutX="44.0" layoutY="362.0" onMousePressed="#PressedDodajAktora" prefHeight="42.0" prefWidth="212.0" text="Dodaj aktora do tego filmu">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnZamknij" layoutX="436.0" layoutY="362.0" onMousePressed="#PressedZamknij" prefHeight="42.0" prefWidth="79.0" text="Zamknij">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

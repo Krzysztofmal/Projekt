@@ -5,6 +5,7 @@
  */
 package projekt.PanelAdministratora;
 
+import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -55,7 +56,9 @@ public class FXMLPanelAdministratoraController implements Initializable {
     private TableColumn<String, Config> colGatunek;
     private ObservableList<Config> data;
     @FXML
-    private Button btnAktorzy;
+    private TableColumn<String, Config> colOpis;
+    @FXML
+    private JFXButton btnSzczegoly;
 
     /**
      * Initializes the controller class.
@@ -67,7 +70,7 @@ public class FXMLPanelAdministratoraController implements Initializable {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM Film");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                data.add(new Config(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5)));
+                data.add(new Config(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6)));
             }
 
         } catch (SQLException ex) {
@@ -77,6 +80,7 @@ public class FXMLPanelAdministratoraController implements Initializable {
         colrezyser.setCellValueFactory(new PropertyValueFactory<>("rezyser"));
         colDlugosc.setCellValueFactory(new PropertyValueFactory<>("dlugosc_filmu"));
         colGatunek.setCellValueFactory(new PropertyValueFactory<>("gatunek"));
+        colOpis.setCellValueFactory(new PropertyValueFactory<>("opis"));
 
         tableAll.setItems(null);
         tableAll.setItems(data);
@@ -97,15 +101,15 @@ public class FXMLPanelAdministratoraController implements Initializable {
 
     @FXML
     private void PressedAdd(MouseEvent event) throws IOException {
-            Parent tabela = FXMLLoader.load(getClass().getResource("FXMLDodajFilm.fxml"));
-            Scene zamowienie = new Scene(tabela);
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(zamowienie);
-            stage.show();
-            stage.setTitle("Dodawanie nowego filmu");
-            Stage okienko = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            okienko.close();
+        Parent tabela = FXMLLoader.load(getClass().getResource("FXMLDodajFilm.fxml"));
+        Scene zamowienie = new Scene(tabela);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(zamowienie);
+        stage.show();
+        stage.setTitle("Dodawanie nowego filmu");
+        Stage okienko = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        okienko.close();
     }
 
     @FXML
@@ -129,7 +133,14 @@ public class FXMLPanelAdministratoraController implements Initializable {
     }
 
     @FXML
-    private void PressedAktorzy(MouseEvent event) {
+    private void PressedSzczegoly(MouseEvent event) throws IOException {
+        Parent tabela = FXMLLoader.load(getClass().getResource("FXMLPanelAktorzy.fxml"));
+        Scene zamowienie = new Scene(tabela);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(zamowienie);
+        stage.show();
+        stage.setTitle("Szczegóły filmu");
     }
 
 }

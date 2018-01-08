@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
@@ -8,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="542.0" prefWidth="407.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projekt.PanelAdministratora.FXMLPanelAdministratoraController">
+<AnchorPane id="AnchorPane" prefHeight="457.0" prefWidth="587.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projekt.PanelAdministratora.FXMLPanelAdministratoraController">
     <stylesheets>
         <URL value="@fxmlpaneladministratora.css" />
     </stylesheets>
@@ -23,22 +24,35 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="btnExit" layoutX="308.0" layoutY="494.0" mnemonicParsing="false" onMousePressed="#PressedExit" prefHeight="35.0" prefWidth="88.0" text="Wyjście" />
-      <TableView fx:id="tableAll" layoutX="4.0" layoutY="96.0" prefHeight="211.0" prefWidth="399.0">
+      <TableView fx:id="tableAll" layoutX="4.0" layoutY="96.0" prefHeight="211.0" prefWidth="575.0">
         <columns>
           <TableColumn fx:id="coltytul" prefWidth="90.0" text="Tytuł filmu" />
           <TableColumn fx:id="colrezyser" prefWidth="106.0" text="Reżyser" />
             <TableColumn fx:id="colDlugosc" prefWidth="95.0" text="Długość(min)" />
             <TableColumn fx:id="colGatunek" prefWidth="107.0" text="Gatunek" />
+            <TableColumn fx:id="colOpis" prefWidth="176.0" text="Opis" />
         </columns>
       </TableView>
-      <Button fx:id="btnAdd" layoutX="146.0" layoutY="462.0" mnemonicParsing="false" onMousePressed="#PressedAdd" prefHeight="50.0" prefWidth="116.0" text="Dodaj film" />
-      <Button fx:id="btnDelete" layoutX="130.0" layoutY="336.0" mnemonicParsing="false" onMousePressed="#PressedDelete" prefHeight="50.0" prefWidth="147.0" text="Usuń wybrany film" />
-      <Label layoutX="2.0" layoutY="68.0" text="oraz usuwać wybrane filmy.">
+      <Label layoutX="272.0" layoutY="41.0" text="oraz usuwać wybrane filmy.">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="btnAktorzy" layoutX="141.0" layoutY="395.0" mnemonicParsing="false" onMousePressed="#PressedAktorzy" prefHeight="50.0" prefWidth="126.0" text="Zarządzaj aktorami " />
+      <JFXButton fx:id="btnDelete" layoutX="14.0" layoutY="329.0" onMousePressed="#PressedDelete" prefHeight="50.0" prefWidth="147.0" text="Usuń wybrany film">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></JFXButton>
+      <JFXButton fx:id="btnSzczegoly" layoutX="218.0" layoutY="329.0" onMousePressed="#PressedSzczegoly" prefHeight="50.0" prefWidth="147.0" text="Szczegóły">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></JFXButton>
+      <JFXButton fx:id="btnAdd" layoutX="417.0" layoutY="329.0" onMousePressed="#PressedAdd" prefHeight="50.0" prefWidth="147.0" text="Dodaj film">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></JFXButton>
+      <JFXButton fx:id="btnExit" layoutX="434.0" layoutY="405.0" onMousePressed="#PressedExit" prefHeight="50.0" prefWidth="112.0" text="Wyjście">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></JFXButton>
    </children>
 </AnchorPane>

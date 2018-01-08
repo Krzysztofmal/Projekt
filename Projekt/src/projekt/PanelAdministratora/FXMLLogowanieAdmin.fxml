@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -8,8 +10,11 @@
 
 <AnchorPane id="AnchorPane" prefHeight="214.0" prefWidth="363.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projekt.PanelAdministratora.FXMLLogowanieAdminController">
    <children>
-      <Button fx:id="btnWejdz" layoutX="143.0" layoutY="138.0" mnemonicParsing="false" onMousePressed="#PressedWejdz" prefHeight="36.0" prefWidth="65.0" text="WEJDŹ" />
-      <Label layoutX="143.0" layoutY="53.0" text="Podaj hasło:" />
-      <PasswordField fx:id="psHaslo" layoutX="101.0" layoutY="95.0" />
+      <JFXPasswordField fx:id="psHaslo" labelFloat="true" layoutX="108.0" layoutY="82.0" promptText="Podaj hasło" />
+      <JFXButton fx:id="btnWejdz" layoutX="133.0" layoutY="125.0" onMousePressed="#PressedWejdz" prefHeight="36.0" prefWidth="85.0" text="Wejdź">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

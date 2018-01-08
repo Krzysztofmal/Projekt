@@ -5,6 +5,8 @@
  */
 package projekt.PanelAdministratora;
 
+import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -45,6 +47,8 @@ public class FXMLDodajFilmController implements Initializable {
     private ComboBox<String> cbGatunek;
     @FXML
     private Button btnAddNew;
+    @FXML
+    private JFXTextArea txaOpis;
 
     /**
      * Initializes the controller class.
@@ -72,8 +76,8 @@ public class FXMLDodajFilmController implements Initializable {
             if (txTytulFilmu.getText().isEmpty() || txRezyser.getText().isEmpty() || txDlFilmu.getText().isEmpty() || cbGatunek.getValue().isEmpty()) {
                 projekt.Projekt.Alert("NIEPOPRAWNE DANE", "Uzupełnij wszystkie pola odpowiednimi danymi.");
             } else {
-                con.createStatement().executeUpdate("INSERT INTO Film(tytuł,rezyser, dlugosc_filmu, gatunek) Values " + "('"
-                        + txTytulFilmu.getText() + "','" + txRezyser.getText() + "','" + txDlFilmu.getText() + "','" + cbGatunek.getValue() + "')");
+                con.createStatement().executeUpdate("INSERT INTO Film(tytuł,rezyser, dlugosc_filmu, gatunek,opis) Values " + "('"
+                        + txTytulFilmu.getText() + "','" + txRezyser.getText() + "','" + txDlFilmu.getText() + "','" + cbGatunek.getValue() + "','" + txaOpis.getText() + "')");
                 con.close();
             Parent tabela = FXMLLoader.load(getClass().getResource("FXMLPanelAdministratora.fxml"));
             Scene zamowienie = new Scene(tabela);

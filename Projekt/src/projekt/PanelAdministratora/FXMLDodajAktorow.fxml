@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="510.0" prefWidth="378.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="projekt.PanelAdministratora.FXMLDodajAktorowController">
+   <children>
+      <TableView fx:id="tableAktorzy" layoutX="51.0" layoutY="77.0" prefHeight="243.0" prefWidth="182.0">
+        <columns>
+          <TableColumn fx:id="colImie" prefWidth="89.0" text="Imię/Imiona" />
+          <TableColumn fx:id="colNazwisko" prefWidth="92.0" text="Nazwisko" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="btnDodaj" layoutX="258.0" layoutY="175.0" onMousePressed="#PressedDodaj" prefHeight="48.0" prefWidth="83.0" text="Dodaj">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXTextField fx:id="txSzukany" labelFloat="true" layoutX="51.0" layoutY="24.0" prefHeight="25.0" prefWidth="166.0" promptText="Nazwisko szukanego aktora:" />
+      <JFXButton fx:id="btnDodajAktora" layoutX="35.0" layoutY="385.0" onMousePressed="#PressedDodajNowegoAktora" prefHeight="48.0" prefWidth="214.0" text="Dodaj aktora do bazy danych">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnZamknij" layoutX="263.0" layoutY="456.0" onMousePressed="#PressedExit" text="Zamknij">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
