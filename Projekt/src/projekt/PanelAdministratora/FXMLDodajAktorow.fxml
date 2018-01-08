@@ -8,8 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="510.0" prefWidth="378.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="projekt.PanelAdministratora.FXMLDodajAktorowController">
+<AnchorPane id="AnchorPane" prefHeight="510.0" prefWidth="378.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projekt.PanelAdministratora.FXMLDodajAktorowController">
    <children>
       <TableView fx:id="tableAktorzy" layoutX="51.0" layoutY="77.0" prefHeight="243.0" prefWidth="182.0">
         <columns>
@@ -22,7 +21,6 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </JFXButton>
-      <JFXTextField fx:id="txSzukany" labelFloat="true" layoutX="51.0" layoutY="24.0" prefHeight="25.0" prefWidth="166.0" promptText="Nazwisko szukanego aktora:" />
       <JFXButton fx:id="btnDodajAktora" layoutX="35.0" layoutY="385.0" onMousePressed="#PressedDodajNowegoAktora" prefHeight="48.0" prefWidth="214.0" text="Dodaj aktora do bazy danych">
          <font>
             <Font name="System Bold" size="14.0" />

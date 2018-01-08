@@ -8,17 +8,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="484.0" prefWidth="317.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="projekt.PanelAdministratora.FXMLDodajNowegoAktoraController">
+<AnchorPane id="AnchorPane" prefHeight="484.0" prefWidth="317.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projekt.PanelAdministratora.FXMLDodajNowegoAktoraController">
    <children>
       <JFXButton fx:id="btnAkceptuj" layoutX="109.0" layoutY="385.0" onMousePressed="#PressedAkceptuj" prefHeight="40.0" prefWidth="97.0" text="Akceptuj">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </JFXButton>
-      <JFXTextField labelFloat="true" layoutX="90.0" layoutY="76.0" promptText="Imię/Imiona" />
-      <JFXTextField labelFloat="true" layoutX="90.0" layoutY="143.0" promptText="Nazwisko" />
-      <JFXTextField labelFloat="true" layoutX="90.0" layoutY="217.0" promptText="Data urodzenia" />
-      <JFXTextField labelFloat="true" layoutX="90.0" layoutY="290.0" promptText="Nagrody" />
+      <JFXTextField fx:id="txImie" labelFloat="true" layoutX="90.0" layoutY="76.0" promptText="Imię/Imiona" />
+      <JFXTextField fx:id="txNazwisko" labelFloat="true" layoutX="90.0" layoutY="143.0" promptText="Nazwisko" />
+      <JFXTextField fx:id="txDataUr" labelFloat="true" layoutX="90.0" layoutY="217.0" promptText="Data urodzenia" />
+      <JFXTextArea fx:id="txaNagrody" labelFloat="true" layoutX="90.0" layoutY="264.0" prefHeight="101.0" prefWidth="135.0" promptText="Nagrody" />
    </children>
 </AnchorPane>
