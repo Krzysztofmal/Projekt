@@ -69,7 +69,7 @@ public class FXMLDodajAktorowController implements Initializable {
             PreparedStatement ps = con.prepareStatement("SELECT id_aktora, imie_aktora, nazwisko_aktora FROM Aktor");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                data.add(new ConfigAktorzy(rs.getInt(1),rs.getString(2), rs.getString(3)));
+                data.add(new ConfigAktorzy(rs.getInt(1), rs.getString(2), rs.getString(3)));
             }
 
         } catch (SQLException ex) {
@@ -85,6 +85,19 @@ public class FXMLDodajAktorowController implements Initializable {
 
     @FXML
     private void PressedDodaj(MouseEvent event) {
+        if (tableAktorzy.getSelectionModel().getSelectedItem() == null) {
+            projekt.Projekt.Alert("NIE WYBRANO AKTORA", "Proszę wybrać aktora, który ma zostać dodany do wybranego filmu.");
+        } else {
+            try {
+                Connection con = projekt.Polaczenie.Polaczenie.Connect();
+                con.createStatement().executeUpdate("INSERT INTO Film_Aktor (id_filmu,id_aktora) Values " + "('"
+                        + FXMLPanelAdministratoraController.idfilmu + "','" + tableAktorzy.getSelectionModel().getSelectedItem().getId_aktora() + "')");
+                con.close();
+            } catch (SQLException e) {
+                System.err.println("ERROR" + e);
+
+            }
+        }
     }
 
     @FXML

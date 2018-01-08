@@ -59,6 +59,7 @@ public class FXMLPanelAdministratoraController implements Initializable {
     private TableColumn<String, Config> colOpis;
     @FXML
     private JFXButton btnSzczegoly;
+    public static int idfilmu;
 
     /**
      * Initializes the controller class.
@@ -134,13 +135,18 @@ public class FXMLPanelAdministratoraController implements Initializable {
 
     @FXML
     private void PressedSzczegoly(MouseEvent event) throws IOException {
-        Parent tabela = FXMLLoader.load(getClass().getResource("FXMLPanelAktorzy.fxml"));
-        Scene zamowienie = new Scene(tabela);
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(zamowienie);
-        stage.show();
-        stage.setTitle("Szczegóły filmu");
+        if (tableAll.getSelectionModel().getSelectedItem() == null) {
+            projekt.Projekt.Alert("NIE WYBRANO FILMU", "Proszę wybrać film, którego szczegóły mają zostać wyświetlone.");
+        } else {
+            idfilmu = tableAll.getSelectionModel().getSelectedItem().getId_filmu();
+            Parent tabela = FXMLLoader.load(getClass().getResource("FXMLPanelAktorzy.fxml"));
+            Scene zamowienie = new Scene(tabela);
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(zamowienie);
+            stage.show();
+            stage.setTitle("Szczegóły filmu");
+        }
     }
 
 }
