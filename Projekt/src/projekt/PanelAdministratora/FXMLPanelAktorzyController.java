@@ -68,10 +68,12 @@ public class FXMLPanelAktorzyController implements Initializable {
             data = FXCollections.observableArrayList();
             PreparedStatement ps = con.prepareStatement("SELECT id_aktora FROM Film_Aktor where id_filmu =" + FXMLPanelAdministratoraController.idfilmu);
             ResultSet rs = ps.executeQuery();
-            PreparedStatement ps3 = con.prepareStatement("SELECT * from Aktor where id_aktora =" + rs.getInt("id_aktora"));
-            ResultSet rs3 = ps3.executeQuery();
             while (rs.next()) {
-                data.add(new ConfigAktorzyCalosc(rs3.getInt(1), rs3.getString(2), rs3.getString(3), rs3.getString(5), rs3.getString(4)));
+                PreparedStatement ps3 = con.prepareStatement("SELECT * from Aktor where id_aktora =" + rs.getInt(1));
+                ResultSet rs3 = ps3.executeQuery();
+                while (rs3.next()) {
+                    data.add(new ConfigAktorzyCalosc(rs3.getInt(1), rs3.getString(2), rs3.getString(3), rs3.getString(5), rs3.getString(4)));
+                }
             }
             PreparedStatement ps2 = con.prepareStatement("SELECT opis from Film where id_filmu = " + FXMLPanelAdministratoraController.idfilmu);
             ResultSet rs2 = ps2.executeQuery();
