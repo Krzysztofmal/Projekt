@@ -26,6 +26,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
@@ -38,8 +39,6 @@ import javafx.stage.Stage;
  */
 public class FXMLPanelAktorzyController implements Initializable {
 
-    @FXML
-    private Label lOpis;
     @FXML
     private TableView<ConfigAktorzyCalosc> tableAktorzy;
     @FXML
@@ -56,6 +55,8 @@ public class FXMLPanelAktorzyController implements Initializable {
     private JFXButton btnZamknij;
 
     private ObservableList<ConfigAktorzyCalosc> data;
+    @FXML
+    private TextArea taOpis;
 
     /**
      * Initializes the controller class.
@@ -78,8 +79,8 @@ public class FXMLPanelAktorzyController implements Initializable {
             PreparedStatement ps2 = con.prepareStatement("SELECT opis from Film where id_filmu = " + FXMLPanelAdministratoraController.idfilmu);
             ResultSet rs2 = ps2.executeQuery();
 
-            lOpis.setText(rs2.getString(1));
-
+            taOpis.setText(rs2.getString(1));
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(FXMLDodajAktorowController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -103,6 +104,8 @@ public class FXMLPanelAktorzyController implements Initializable {
         stage.setScene(zamowienie);
         stage.show();
         stage.setTitle("Dodawanie Aktorów");
+        Stage okienko = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        okienko.close();
     }
 
     @FXML

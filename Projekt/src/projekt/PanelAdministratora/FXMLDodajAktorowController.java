@@ -71,7 +71,7 @@ public class FXMLDodajAktorowController implements Initializable {
             while (rs.next()) {
                 data.add(new ConfigAktorzy(rs.getInt(1), rs.getString(2), rs.getString(3)));
             }
-
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(FXMLDodajAktorowController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -84,7 +84,7 @@ public class FXMLDodajAktorowController implements Initializable {
     }
 
     @FXML
-    private void PressedDodaj(MouseEvent event) {
+    private void PressedDodaj(MouseEvent event) throws IOException {
         if (tableAktorzy.getSelectionModel().getSelectedItem() == null) {
             projekt.Projekt.Alert("NIE WYBRANO AKTORA", "Proszę wybrać aktora, który ma zostać dodany do wybranego filmu.");
         } else {
@@ -95,9 +95,18 @@ public class FXMLDodajAktorowController implements Initializable {
                 con.close();
             } catch (SQLException e) {
                 System.err.println("ERROR" + e);
-
             }
+            Parent tabela = FXMLLoader.load(getClass().getResource("FXMLPanelAktorzy.fxml"));
+            Scene zamowienie = new Scene(tabela);
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(zamowienie);
+            stage.show();
+            stage.setTitle("Dodawanie Aktorów");
+            Stage okienko = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            okienko.close();
         }
+
     }
 
     @FXML
