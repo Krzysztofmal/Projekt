@@ -219,11 +219,13 @@ public class FXMLWyszukiwarkaFilmowController implements Initializable {
         //w porównywaniu ustawić algorytm który przeanalizuje dane wpisane do textfieldu
         dataFilm = FXCollections.observableArrayList();
 dataFilm.clear();
+//tableFilmy.setItems(null);
+//tableFilmy.getItems().clear();
         //moze na tf changelistenerze to zrobić
         Connection conn = Polaczenie.Connect();
 
         Statement ps = conn.createStatement();
-        ResultSet rs = ps.executeQuery("SELECT film.id_filmu,film.tytuł,film.rezyser,film.gatunek,film.dlugosc_filmu, AVG(oceny.ocena) as ocena FROM film,oceny WHERE film.id_filmu=oceny.id_filmu GROUP BY film.id_filmu;");
+        ResultSet rs = ps.executeQuery("SELECT film.id_filmu,film.tytuł,film.rezyser,film.gatunek,film.dlugosc_filmu, CASE WHEN oceny.ocena is null THEN '0' ELSE AVG(Oceny.ocena) END as ocena  FROM film,oceny WHERE film.id_filmu=oceny.id_filmu GROUP BY film.id_filmu;");
 
         
         
