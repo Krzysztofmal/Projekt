@@ -5,7 +5,9 @@
  */
 package projekt.Model;
 
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -20,14 +22,16 @@ public class Film {
     private final StringProperty tytuł;
     private final StringProperty rezyser;
     private final IntegerProperty dlugosc_filmu;
-    private final IntegerProperty id_kategorii;
+    private final StringProperty gatunek;
+    private final DoubleProperty ocena;
     
-    public Film (Integer id_filmu, String tytuł, String rezyser, Integer dlugosc_filmu, Integer id_kategorii){
+    public Film (Integer id_filmu, String tytuł, String rezyser, Integer dlugosc_filmu, String gatunek, Double ocena){
         this.id_filmu = new SimpleIntegerProperty (id_filmu);
         this.tytuł = new SimpleStringProperty (tytuł);
         this.rezyser = new SimpleStringProperty (rezyser);
         this.dlugosc_filmu = new SimpleIntegerProperty (dlugosc_filmu);
-        this.id_kategorii = new SimpleIntegerProperty (id_kategorii);
+        this.gatunek = new SimpleStringProperty (gatunek);
+        this.ocena = new SimpleDoubleProperty (ocena);
     }
     
     //gettery
@@ -48,8 +52,12 @@ public class Film {
         return dlugosc_filmu.get();
     }
     
-    public Integer getId_kategorii(){
-        return id_kategorii.get();
+    public String getGatunek(){
+        return gatunek.get();
+    }
+    
+    public Double getOcena(){
+        return ocena.get();
     }
     
     //settery
@@ -66,8 +74,12 @@ public class Film {
         dlugosc_filmu.set(value);
     }
     
-    public void setId_kategorii(Integer value){
-        id_kategorii.set(value);
+    public void setGatunek(String value){
+        gatunek.set(value);
+    }
+    
+    public void setOcena(Double value){
+        ocena.set(value);
     }
     
     //property value
@@ -88,9 +100,12 @@ public class Film {
         return dlugosc_filmu;
     }
     
-    public IntegerProperty id_kategoriiProperty(){
-        return id_kategorii;
+    public StringProperty gatunekProperty(){
+        return gatunek;
     }
     
+    public DoubleProperty ocenaProperty(){
+        return ocena;
+    }
     
 }

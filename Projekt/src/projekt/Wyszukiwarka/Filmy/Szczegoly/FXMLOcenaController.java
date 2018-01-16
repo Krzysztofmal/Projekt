@@ -8,11 +8,17 @@ package projekt.Wyszukiwarka.Filmy.Szczegoly;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
+import projekt.Polaczenie.Polaczenie;
+import projekt.Wyszukiwarka.Filmy.FXMLWyszukiwarkaFilmowController;
 
 /**
  * FXML Controller class
@@ -28,6 +34,10 @@ public class FXMLOcenaController implements Initializable {
     @FXML
     private JFXComboBox<String> cbOcena;
 
+    
+    
+    
+    
     /**
      * Initializes the controller class.
      */
@@ -51,8 +61,19 @@ public class FXMLOcenaController implements Initializable {
     }
 
     @FXML
-    private void ocen(ActionEvent event) {
-
+    private void ocen(ActionEvent event) throws SQLException {
+        
+        //FXMLWyszukiwarkaFilmowController.idFilmu;
+        
+         Connection conn = Polaczenie.Connect();
+        
+         //Uniemożliwić głosowanie jak jakieś pole ma własność false, (przy uruchomieniu wyszukiwarki filmów zmieniać na true
+        
+        Statement ps = conn.createStatement();
+        ps.executeUpdate("INSERT INTO Oceny (id_filmu, ocena) VALUES (" + FXMLWyszukiwarkaFilmowController.idFilmu + ", " + cbOcena.getSelectionModel().getSelectedItem().toString() + ");");
+        
+        
+        
     }
 
     @FXML
