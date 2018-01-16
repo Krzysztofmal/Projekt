@@ -65,7 +65,9 @@ public class FXMLDodajFilmController implements Initializable {
                 "Film wojenny",
                 "Kryminał",
                 "Thriller",
-                "Western"
+                "Western",
+                "SCI-FI",
+                "Akcja"
         );
     }
 
@@ -79,16 +81,16 @@ public class FXMLDodajFilmController implements Initializable {
                 con.createStatement().executeUpdate("INSERT INTO Film(tytuł,rezyser, dlugosc_filmu, gatunek,opis) Values " + "('"
                         + txTytulFilmu.getText() + "','" + txRezyser.getText() + "','" + txDlFilmu.getText() + "','" + cbGatunek.getValue() + "','" + txaOpis.getText() + "')");
                 con.close();
-            Parent tabela = FXMLLoader.load(getClass().getResource("FXMLPanelAdministratora.fxml"));
-            Scene zamowienie = new Scene(tabela);
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(zamowienie);
-            stage.show();
-            stage.setTitle("Panel Administratora");
-            Stage okienko = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            okienko.close();
-                
+                Parent tabela = FXMLLoader.load(getClass().getResource("FXMLPanelAdministratora.fxml"));
+                Scene zamowienie = new Scene(tabela);
+                Stage stage = new Stage();
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setScene(zamowienie);
+                stage.show();
+                stage.setTitle("Panel Administratora");
+                Stage okienko = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                okienko.close();
+
             }
         } catch (SQLException e) {
             System.err.println("ERROR" + e);
