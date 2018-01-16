@@ -223,7 +223,7 @@ dataFilm.clear();
         Connection conn = Polaczenie.Connect();
 
         Statement ps = conn.createStatement();
-        ResultSet rs = ps.executeQuery("SELECT Film.id_filmu,Film.tytuł,Film.rezyser,Film.dlugosc_filmu,Film.gatunek,AVG(Oceny.ocena) as ocena FROM Film,Oceny WHERE Film.id_filmu=Oceny.id_filmu;");
+        ResultSet rs = ps.executeQuery("SELECT film.id_filmu,film.tytuł,film.rezyser,film.gatunek,film.dlugosc_filmu, AVG(oceny.ocena) as ocena FROM film,oceny WHERE film.id_filmu=oceny.id_filmu GROUP BY film.id_filmu;");
 
         
         
@@ -246,7 +246,7 @@ dataFilm.clear();
                                 dataFilm.add(new Film(rs.getInt("id_filmu"), rs.getString("tytuł"), rs.getString("rezyser"), rs.getInt("dlugosc_filmu"), rs.getString("gatunek"), rs.getDouble("ocena")));
 
                         }}
-
+                    
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(FXMLWyszukiwarkaFilmowController.class.getName()).log(Level.SEVERE, null, ex);
