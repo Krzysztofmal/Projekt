@@ -211,13 +211,14 @@ public class FXMLWyszukiwarkaFilmowController implements Initializable {
     @FXML
     private void wyszukajFilmy(ActionEvent event) throws SQLException {
          //bind do wyszukiwania
+         
 
         //columnTytul.textProperty().bind(tfTytul.textProperty());
         //przekazac wszystkie wartosci do listy, i liste zbindować na zmiany z textfielda
         //Pobrać wszystkie tytuły do listy, następnie ustawić na nią bind i porównywać z textfieldem 
         //w porównywaniu ustawić algorytm który przeanalizuje dane wpisane do textfieldu
         dataFilm = FXCollections.observableArrayList();
-
+dataFilm.clear();
         //moze na tf changelistenerze to zrobić
         Connection conn = Polaczenie.Connect();
 
