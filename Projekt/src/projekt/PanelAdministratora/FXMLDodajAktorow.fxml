@@ -10,10 +10,10 @@
 
 <AnchorPane id="AnchorPane" prefHeight="510.0" prefWidth="378.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projekt.PanelAdministratora.FXMLDodajAktorowController">
    <children>
-      <TableView fx:id="tableAktorzy" layoutX="51.0" layoutY="77.0" prefHeight="243.0" prefWidth="182.0">
+      <TableView fx:id="tableAktorzy" layoutX="51.0" layoutY="77.0" prefHeight="296.0" prefWidth="204.0">
         <columns>
-          <TableColumn fx:id="colImie" prefWidth="89.0" text="Imię/Imiona" />
-          <TableColumn fx:id="colNazwisko" prefWidth="92.0" text="Nazwisko" />
+          <TableColumn fx:id="colImie" prefWidth="96.0" text="Imię/Imiona" />
+          <TableColumn fx:id="colNazwisko" prefWidth="106.0" text="Nazwisko" />
         </columns>
       </TableView>
       <JFXButton fx:id="btnDodaj" layoutX="258.0" layoutY="175.0" onMousePressed="#PressedDodaj" prefHeight="48.0" prefWidth="83.0" text="Dodaj">
