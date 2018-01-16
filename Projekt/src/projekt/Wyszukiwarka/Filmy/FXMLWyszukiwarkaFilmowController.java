@@ -181,7 +181,7 @@ public class FXMLWyszukiwarkaFilmowController implements Initializable {
 
                         }}
 
-                }
+}
             } catch (SQLException ex) {
                 Logger.getLogger(FXMLWyszukiwarkaFilmowController.class.getName()).log(Level.SEVERE, null, ex);
             }
