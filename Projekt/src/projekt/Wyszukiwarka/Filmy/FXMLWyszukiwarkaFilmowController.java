@@ -125,6 +125,8 @@ public class FXMLWyszukiwarkaFilmowController implements Initializable {
 //        } catch (SQLException ex) {
 //            Logger.getLogger(FXMLWyszukiwarkaFilmowController.class.getName()).log(Level.SEVERE, null, ex);
 //        }
+
+
     }
 
     @FXML
@@ -142,70 +144,6 @@ public class FXMLWyszukiwarkaFilmowController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(bSzczegoly.getScene().getWindow());
         stage.showAndWait();
-    }
-
-    private void uzupelnij() throws SQLException {
-        //bind do wyszukiwania
-
-        //columnTytul.textProperty().bind(tfTytul.textProperty());
-        //przekazac wszystkie wartosci do listy, i liste zbindować na zmiany z textfielda
-        //Pobrać wszystkie tytuły do listy, następnie ustawić na nią bind i porównywać z textfieldem 
-        //w porównywaniu ustawić algorytm który przeanalizuje dane wpisane do textfieldu
-        dataFilm = FXCollections.observableArrayList();
-
-        //moze na tf changelistenerze to zrobić
-        Connection conn = Polaczenie.Connect();
-
-        Statement ps = conn.createStatement();
-        ResultSet rs = ps.executeQuery("SELECT Film.id_filmu,Film.tytuł,Film.rezyser,Film.dlugosc_filmu,Film.gatunek,AVG(Oceny.ocena) as ocena FROM Film,Oceny WHERE Film.id_filmu=Oceny.id_filmu;");
-
-        
-        
-//        tfTytul.textProperty().addListener(new ChangeListener<String>()  {
-//    @Override
-//    public void changed(ObservableValue<? extends String> observable,
-//                        String oldValue, String newValue) {
-            try {
-                boolean wynik;
-                while (rs.next()) {
-                    wynik = false;
-                    if (Algorytmy.AlgorytmMiaryOdleglosciLevenshteina(rs.getString("tytuł"), tfTytul.getText()) < 3) {
-                        wynik = true;
-                            dataFilm.add(new Film(rs.getInt("id_filmu"), rs.getString("tytuł"), rs.getString("rezyser"), rs.getInt("dlugosc_filmu"), rs.getString("gatunek"), rs.getDouble("ocena")));
-                    } else if (wynik == false){
-                        //jak pierwszy nic nie znajdzie, to wtedy działa drugi algorytm
-                        //Algorytmy.AlgorytmKnuthaMorrisaPratta(rs.getString("tytuł"), tfTytul.getText());
-                        if (Algorytmy.AlgorytmKnuthaMorrisaPratta(rs.getString("tytuł"), tfTytul.getText()) == 1) {
-                            wynik = true;
-                                dataFilm.add(new Film(rs.getInt("id_filmu"), rs.getString("tytuł"), rs.getString("rezyser"), rs.getInt("dlugosc_filmu"), rs.getString("gatunek"), rs.getDouble("ocena")));
-
-                        }}
-
-}
-            } catch (SQLException ex) {
-                Logger.getLogger(FXMLWyszukiwarkaFilmowController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        //}));
-               // }});
-        try {
-            ps.close();
-            rs.close();
-            conn.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(FXMLWyszukiwarkaFilmowController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        
-
-        columnTytul.setCellValueFactory(new PropertyValueFactory<>("tytuł"));
-        columnRezyser.setCellValueFactory(new PropertyValueFactory<>("rezyser"));
-        columnKategoria.setCellValueFactory(new PropertyValueFactory<>("gatunek"));
-        columnDlugosc.setCellValueFactory(new PropertyValueFactory<>("dlugosc_filmu"));
-        columnOcena.setCellValueFactory(new PropertyValueFactory<>("ocena"));
-
-        tableFilmy.setItems(null);
-        tableFilmy.setItems(dataFilm);
-        
     }
 
     @FXML
@@ -237,17 +175,48 @@ dataFilm.clear();
                 boolean wynik;
                 while (rs.next()) {
                     wynik = false;
-                    if (Algorytmy.AlgorytmMiaryOdleglosciLevenshteina(rs.getString("tytuł"), tfTytul.getText()) < 3) {
-                        wynik = true;
-                            dataFilm.add(new Film(rs.getInt("id_filmu"), rs.getString("tytuł"), rs.getString("rezyser"), rs.getInt("dlugosc_filmu"), rs.getString("gatunek"), rs.getDouble("ocena")));
-                    } else if (wynik == false){
-                        //jak pierwszy nic nie znajdzie, to wtedy działa drugi algorytm
-                        //Algorytmy.AlgorytmKnuthaMorrisaPratta(rs.getString("tytuł"), tfTytul.getText());
+                    
+                    
+                    //if (tfTytul.getText().equals("!"){ wczyta wszystkie filmy, else ALgorytmy
+                    
+                    if (wynik == false){
+                        
+                        Algorytmy.AlgorytmKnuthaMorrisaPratta(rs.getString("tytuł"), tfTytul.getText());
                         if (Algorytmy.AlgorytmKnuthaMorrisaPratta(rs.getString("tytuł"), tfTytul.getText()) == 1) {
                             wynik = true;
+                            //System.out.println(Algorytmy.AlgorytmKnuthaMorrisaPratta(rs.getString("tytuł"), tfTytul.getText()));
                                 dataFilm.add(new Film(rs.getInt("id_filmu"), rs.getString("tytuł"), rs.getString("rezyser"), rs.getInt("dlugosc_filmu"), rs.getString("gatunek"), rs.getDouble("ocena")));
 
-                        }}
+                        }} 
+                    
+                    if (wynik == false){
+                    if (Algorytmy.AlgorytmMiaryOdleglosciLevenshteina(rs.getString("tytuł"), tfTytul.getText()) < 7) {
+                        wynik = true;
+                            dataFilm.add(new Film(rs.getInt("id_filmu"), rs.getString("tytuł"), rs.getString("rezyser"), rs.getInt("dlugosc_filmu"), rs.getString("gatunek"), rs.getDouble("ocena")));
+                    }}
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+//                    if (Algorytmy.AlgorytmMiaryOdleglosciLevenshteina(rs.getString("tytuł"), tfTytul.getText()) < 3) {
+//                        wynik = true;
+//                            dataFilm.add(new Film(rs.getInt("id_filmu"), rs.getString("tytuł"), rs.getString("rezyser"), rs.getInt("dlugosc_filmu"), rs.getString("gatunek"), rs.getDouble("ocena")));
+//                    } else 
+//                        if (wynik == false){
+//                        
+//                        Algorytmy.AlgorytmKnuthaMorrisaPratta(rs.getString("tytuł"), tfTytul.getText());
+//                        if (Algorytmy.AlgorytmKnuthaMorrisaPratta(rs.getString("tytuł"), tfTytul.getText()) == 1) {
+//                            wynik = true;
+//                            System.out.println(Algorytmy.AlgorytmKnuthaMorrisaPratta(rs.getString("tytuł"), tfTytul.getText()));
+//                                dataFilm.add(new Film(rs.getInt("id_filmu"), rs.getString("tytuł"), rs.getString("rezyser"), rs.getInt("dlugosc_filmu"), rs.getString("gatunek"), rs.getDouble("ocena")));
+//
+//                        }}
+                        
+                        
+                        
                     
                 }
             } catch (SQLException ex) {

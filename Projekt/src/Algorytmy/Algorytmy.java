@@ -31,6 +31,7 @@ public class Algorytmy {
             P[j] = t;
         }
         int z;
+        int d = 0;
 //      algorytm KMP
         i = 1;
         j = 0;
@@ -42,10 +43,11 @@ public class Algorytmy {
             if (j == m) {
                 System.out.println(i);
                 z = i;
+                d = i;
             }
             i = i + Math.max(1, j - P[j]);
         }
-        return i;
+        return d;
     }
 
     public static int AlgorytmMiaryOdleglosciLevenshteina(String wzorzec, String tekst) {
