@@ -102,7 +102,6 @@ public class Algorytmy {
                 for (int j = 0; j < tabTekst.length; j++) {
                     if (tabWzorzec[i] == tabTekst[j]) {
                         taSamaPozycjaLitery += 1.0;
-                        continue;
                     }
                     if (tabTekst[j] == tabWzorzec[i]) {
                         taSamaLitera += 1.0;
@@ -116,7 +115,7 @@ public class Algorytmy {
                 for (int j = 0; j < tabWzorzec.length; j++) {
                     if (tabTekst[i] == tabWzorzec[j]) {
                         taSamaPozycjaLitery += 1.0;
-                        continue;
+                        
                     }
                     if (tabTekst[i] == tabWzorzec[j]) {
                         taSamaLitera += 1.0;
