@@ -11,7 +11,7 @@ package Algorytmy;
  */
 public class Algorytmy {
 
-    public static int  AlgorytmKnuthaMorrisaPratta(String wzorzec, String tekst) {
+    public static int AlgorytmKnuthaMorrisaPratta(String wzorzec, String tekst) {
         int m, n, i, j, t;
         int P[] = new int[100];//maksymalna dlugosc wzorca to 100 symboli
         n = tekst.length();
@@ -75,26 +75,68 @@ public class Algorytmy {
                 }
 
                 d[i][j] = Math.min(d[i - 1][j] + 1,
-                        Math.min(d[i][j - 1] + 1, 
-                                d[i - 1][j - 1] + cost));   
+                        Math.min(d[i][j - 1] + 1,
+                                d[i - 1][j - 1] + cost));
 
             }
         }
 
         return d[m][n];
     }
+
+    public static double porownanieZnakow(String wzorzec, String tekst) {
+
+        double procentPodobienstwa = 0;
+
+        double taSamaLitera = 0;
+        double taSamaPozycjaLitery = 0;
+
+        int nTekst = tekst.length();
+        int nWzorzec = tekst.length();
+
+        char[] tabWzorzec = wzorzec.replace(" ", "").toLowerCase().toCharArray();
+        char[] tabTekst = tekst.replace(" ", "").toLowerCase().toCharArray();
+
+        if (tabWzorzec.length >= tabTekst.length) {
+            for (int i = 0; i < tabWzorzec.length; i++) {
+                for (int j = 0; j < tabTekst.length; j++) {
+                    if (tabWzorzec[i] == tabTekst[j]) {
+                        taSamaPozycjaLitery += 1.0;
+                        continue;
+                    }
+                    if (tabTekst[j] == tabWzorzec[i]) {
+                        taSamaLitera += 1.0;
+                        break;
+                    }
+                }
+                procentPodobienstwa = (((taSamaPozycjaLitery / tabWzorzec.length) * 100) + ((taSamaLitera / tabWzorzec.length) * 100)) / 2;
+            }
+        } else if (tabWzorzec.length < tabTekst.length) {
+            for (int i = 0; i < tabTekst.length; i++) {
+                for (int j = 0; j < tabWzorzec.length; j++) {
+                    if (tabTekst[i] == tabWzorzec[j]) {
+                        taSamaPozycjaLitery += 1.0;
+                        continue;
+                    }
+                    if (tabTekst[i] == tabWzorzec[j]) {
+                        taSamaLitera += 1.0;
+                        break;
+                    }
+                }
+            }
+            procentPodobienstwa = (((taSamaPozycjaLitery / tabTekst.length) * 100) + ((taSamaLitera / tabTekst.length) * 100)) / 2;
+        }
+        return procentPodobienstwa;
+    }
+
     public static void main(String[] args) {
-        
+
         String wzorzec = "czlowiek";
         String tekst = "stary czlowiek i morze";
         System.out.print("Indeks poczatkowego wzorca w tekscie: ");
-        AlgorytmKnuthaMorrisaPratta(wzorzec,tekst);
-        System.out.println("Algorytm MOL: "+AlgorytmMiaryOdleglosciLevenshteina(wzorzec,tekst));
+        AlgorytmKnuthaMorrisaPratta(wzorzec, tekst);
+        System.out.println("Algorytm MOL: " + AlgorytmMiaryOdleglosciLevenshteina(wzorzec, tekst));
 
     }
 
 }
-
-
-
-
