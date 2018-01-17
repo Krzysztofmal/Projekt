@@ -8,7 +8,15 @@ package projekt.Wyszukiwarka.Filmy.Szczegoly;
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,10 +26,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import projekt.Model.Aktor;
+import projekt.Polaczenie.Polaczenie;
+import projekt.Wyszukiwarka.Filmy.FXMLWyszukiwarkaFilmowController;
 
 /**
  * FXML Controller class
@@ -41,16 +52,67 @@ public class FXMLSzczegolyController implements Initializable {
     @FXML
     private TableColumn<Aktor, String> columnData;
     @FXML
-    private TableColumn<Aktor, ?> columnNagrody;
+    private TableColumn<Aktor, String> columnNagrody;
     @FXML
     private Label lOpis;
 
+    
+    private ObservableList<Aktor> dataAktor;
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+        dataAktor = FXCollections.observableArrayList();
+         
+
+         
+        try {
+            Connection conn = Polaczenie.Connect();
+            Statement ps = conn.createStatement();
+            ResultSet rs = ps.executeQuery("SELECT Aktor.id_aktora,Aktor.imie_aktora,Aktor.nazwisko_aktora,Aktor.nagrody,Aktor.data_urodzenia FROM Aktor,Film_Aktor WHERE Aktor.id_aktora=Film_aktor.id_aktora AND Film_aktor.id_filmu=" + FXMLWyszukiwarkaFilmowController.idFilmu + ";");
+
+            while (rs.next()){                
+                dataAktor.add(new Aktor(rs.getInt("id_aktora"),rs.getString("imie_aktora"),rs.getString("nazwisko_aktora"),rs.getString("nagrody"),rs.getString("data_urodzenia")));                
+            }
+            
+            
+            
+            ps.close();
+            rs.close();
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLSzczegolyController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        columnImie.setCellValueFactory(new PropertyValueFactory<>("imie_aktora"));
+        columnNazwisko.setCellValueFactory(new PropertyValueFactory<>("nazwisko_aktora"));
+        columnNagrody.setCellValueFactory(new PropertyValueFactory<>("nagrody"));
+        columnData.setCellValueFactory(new PropertyValueFactory<>("data_urodzenia"));
+        
+        tableAktorzy.setItems(null);
+        tableAktorzy.setItems(dataAktor);
+        
+        
+        
+
+
+        try {
+                    
+         Connection conn = Polaczenie.Connect();
+            Statement ps = conn.createStatement();
+            ResultSet rs = ps.executeQuery("SELECT Film.opis FROM Film WHERE film.id_filmu=" + FXMLWyszukiwarkaFilmowController.idFilmu + ";");
+
+            lOpis.setText(rs.getString("opis"));
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLSzczegolyController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+        
     }    
 
     @FXML

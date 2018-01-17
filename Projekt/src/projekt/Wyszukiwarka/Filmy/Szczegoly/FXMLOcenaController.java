@@ -72,6 +72,8 @@ public class FXMLOcenaController implements Initializable {
         Statement ps = conn.createStatement();
         ps.executeUpdate("INSERT INTO Oceny (id_filmu, ocena) VALUES (" + FXMLWyszukiwarkaFilmowController.idFilmu + ", " + cbOcena.getSelectionModel().getSelectedItem().toString() + ");");
         
+        Stage stage = (Stage) bAnuluj.getScene().getWindow();
+        stage.close();
         
         
     }

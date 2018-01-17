@@ -33,6 +33,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import projekt.Model.Film;
@@ -73,7 +74,8 @@ public class FXMLWyszukiwarkaFilmowController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-            //        //bind do wyszukiwania
+        bSzczegoly.setDisable(true);
+        //        //bind do wyszukiwania
 //
 //        //columnTytul.textProperty().bind(tfTytul.textProperty());
 //        //przekazac wszystkie wartosci do listy, i liste zbindować na zmiany z textfielda
@@ -119,14 +121,11 @@ public class FXMLWyszukiwarkaFilmowController implements Initializable {
 //        tableFilmy.setItems(null);
 //        tableFilmy.setItems(dataFilm);
 
-
 //try{
 //    uzupelnij();
 //        } catch (SQLException ex) {
 //            Logger.getLogger(FXMLWyszukiwarkaFilmowController.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-
-
     }
 
     @FXML
@@ -148,15 +147,14 @@ public class FXMLWyszukiwarkaFilmowController implements Initializable {
 
     @FXML
     private void wyszukajFilmy(ActionEvent event) throws SQLException {
-         //bind do wyszukiwania
-         
-
+        //bind do wyszukiwania
+        System.out.println(tfTytul.getText().replace(" ", "").toLowerCase());
         //columnTytul.textProperty().bind(tfTytul.textProperty());
         //przekazac wszystkie wartosci do listy, i liste zbindować na zmiany z textfielda
         //Pobrać wszystkie tytuły do listy, następnie ustawić na nią bind i porównywać z textfieldem 
         //w porównywaniu ustawić algorytm który przeanalizuje dane wpisane do textfieldu
         dataFilm = FXCollections.observableArrayList();
-dataFilm.clear();
+        dataFilm.clear();
 //tableFilmy.setItems(null);
 //tableFilmy.getItems().clear();
         //moze na tf changelistenerze to zrobić
@@ -164,43 +162,45 @@ dataFilm.clear();
 
         Statement ps = conn.createStatement();
         ResultSet rs = ps.executeQuery("SELECT film.id_filmu,film.tytuł,film.rezyser,film.gatunek,film.dlugosc_filmu, CASE WHEN oceny.ocena is null THEN '0' ELSE AVG(Oceny.ocena) END as ocena  FROM film,oceny WHERE film.id_filmu=oceny.id_filmu GROUP BY film.id_filmu;");
-
-        
-        
+        //ResultSet rs2 = ps.executeQuery("SELECT")
 //        tfTytul.textProperty().addListener(new ChangeListener<String>()  {
 //    @Override
 //    public void changed(ObservableValue<? extends String> observable,
 //                        String oldValue, String newValue) {
-            try {
-                boolean wynik;
-                while (rs.next()) {
-                    wynik = false;
-                    
-                    
-                    //if (tfTytul.getText().equals("!"){ wczyta wszystkie filmy, else ALgorytmy
-                    
-                    if (wynik == false){
-                        
-                        Algorytmy.AlgorytmKnuthaMorrisaPratta(rs.getString("tytuł"), tfTytul.getText());
-                        if (Algorytmy.AlgorytmKnuthaMorrisaPratta(rs.getString("tytuł"), tfTytul.getText()) == 1) {
-                            wynik = true;
-                            //System.out.println(Algorytmy.AlgorytmKnuthaMorrisaPratta(rs.getString("tytuł"), tfTytul.getText()));
-                                dataFilm.add(new Film(rs.getInt("id_filmu"), rs.getString("tytuł"), rs.getString("rezyser"), rs.getInt("dlugosc_filmu"), rs.getString("gatunek"), rs.getDouble("ocena")));
+        try {
+            boolean wynik;
+            boolean dodano = false;
+            while (rs.next()) {
+                wynik = false;
 
-                        }} 
+                if (tfTytul.getText().equals("")){ 
                     
-                    if (wynik == false){
-                    if (Algorytmy.AlgorytmMiaryOdleglosciLevenshteina(rs.getString("tytuł"), tfTytul.getText()) < 7) {
+                     dataFilm.add(new Film(rs.getInt("id_filmu"), rs.getString("tytuł"), rs.getString("rezyser"), rs.getInt("dlugosc_filmu"), rs.getString("gatunek"), rs.getDouble("ocena")));
+
+                    
+                } else {
+                
+                
+                if (wynik == false) {
+
+                    //Algorytmy.AlgorytmKnuthaMorrisaPratta(rs.getString("tytuł"), tfTytul.getText());
+                    if (Algorytmy.AlgorytmKnuthaMorrisaPratta(rs.getString("tytuł").replace(" ", "").toLowerCase(), tfTytul.getText().replace(" ", "").toLowerCase()) == 1) {
                         wynik = true;
-                            dataFilm.add(new Film(rs.getInt("id_filmu"), rs.getString("tytuł"), rs.getString("rezyser"), rs.getInt("dlugosc_filmu"), rs.getString("gatunek"), rs.getDouble("ocena")));
-                    }}
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+                        dodano = true;
+                        //System.out.println(Algorytmy.AlgorytmKnuthaMorrisaPratta(rs.getString("tytuł"), tfTytul.getText()));
+                        dataFilm.add(new Film(rs.getInt("id_filmu"), rs.getString("tytuł"), rs.getString("rezyser"), rs.getInt("dlugosc_filmu"), rs.getString("gatunek"), rs.getDouble("ocena")));
+
+                    }
+                }
+                
+                if (wynik == false && dodano == false) {
+                    if (Algorytmy.AlgorytmMiaryOdleglosciLevenshteina(rs.getString("tytuł").replace(" ", "").toLowerCase(), tfTytul.getText().replace(" ", "").toLowerCase()) < 5) {
+                        wynik = true;
+                        dataFilm.add(new Film(rs.getInt("id_filmu"), rs.getString("tytuł"), rs.getString("rezyser"), rs.getInt("dlugosc_filmu"), rs.getString("gatunek"), rs.getDouble("ocena")));
+                    }
+                }
+            }
+
 //                    if (Algorytmy.AlgorytmMiaryOdleglosciLevenshteina(rs.getString("tytuł"), tfTytul.getText()) < 3) {
 //                        wynik = true;
 //                            dataFilm.add(new Film(rs.getInt("id_filmu"), rs.getString("tytuł"), rs.getString("rezyser"), rs.getInt("dlugosc_filmu"), rs.getString("gatunek"), rs.getDouble("ocena")));
@@ -214,16 +214,12 @@ dataFilm.clear();
 //                                dataFilm.add(new Film(rs.getInt("id_filmu"), rs.getString("tytuł"), rs.getString("rezyser"), rs.getInt("dlugosc_filmu"), rs.getString("gatunek"), rs.getDouble("ocena")));
 //
 //                        }}
-                        
-                        
-                        
-                    
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(FXMLWyszukiwarkaFilmowController.class.getName()).log(Level.SEVERE, null, ex);
             }
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLWyszukiwarkaFilmowController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         //}));
-               // }});
+        // }});
         try {
             ps.close();
             rs.close();
@@ -231,8 +227,6 @@ dataFilm.clear();
         } catch (SQLException ex) {
             Logger.getLogger(FXMLWyszukiwarkaFilmowController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        
 
         columnTytul.setCellValueFactory(new PropertyValueFactory<>("tytuł"));
         columnRezyser.setCellValueFactory(new PropertyValueFactory<>("rezyser"));
@@ -244,5 +238,14 @@ dataFilm.clear();
         tableFilmy.setItems(dataFilm);
     }
 
-   
+    @FXML
+    private void zaznaczFilm(MouseEvent event) {
+        
+        if (tableFilmy.getSelectionModel().getSelectedItem()!=null){
+            bSzczegoly.setDisable(false);
+            idFilmu = tableFilmy.getSelectionModel().getSelectedItem().getId_filmu();
+        }
+        
+    }
+
 }

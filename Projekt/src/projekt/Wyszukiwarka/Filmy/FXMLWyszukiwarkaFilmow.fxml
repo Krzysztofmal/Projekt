@@ -14,7 +14,7 @@
     </stylesheets>
    <children>
       <JFXTextField fx:id="tfTytul" labelFloat="true" layoutX="59.0" layoutY="36.0" promptText="Tytuł filmu" />
-      <TableView fx:id="tableFilmy" layoutX="44.0" layoutY="108.0" prefHeight="207.0" prefWidth="559.0">
+      <TableView fx:id="tableFilmy" layoutX="44.0" layoutY="108.0" onMouseClicked="#zaznaczFilm" prefHeight="207.0" prefWidth="559.0">
         <columns>
           <TableColumn fx:id="columnTytul" prefWidth="158.0" text="Tytuł" />
           <TableColumn fx:id="columnRezyser" prefWidth="133.0" text="Reżyser" />
