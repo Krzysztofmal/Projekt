@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import java.net.URL?>
 <?import javafx.scene.control.Label?>
@@ -13,7 +14,7 @@
     </stylesheets>
    <children>
       <JFXTextField fx:id="tfAktor" labelFloat="true" layoutX="105.0" layoutY="46.0" prefHeight="25.0" prefWidth="213.0" promptText="imię i/lub nazwisko aktora" />
-      <TableView fx:id="tableAktorzy" layoutX="37.0" layoutY="94.0" prefHeight="135.0" prefWidth="584.0">
+      <TableView fx:id="tableAktorzy" layoutX="37.0" layoutY="94.0" onMouseClicked="#zaznaczAktora" prefHeight="135.0" prefWidth="584.0">
         <columns>
           <TableColumn fx:id="columnImie" prefWidth="106.0" text="Imię" />
           <TableColumn fx:id="columnNazwisko" prefWidth="104.0" text="Nazwisko" />
@@ -31,5 +32,6 @@
         </columns>
       </TableView>
       <Label layoutX="37.0" layoutY="266.0" prefHeight="17.0" prefWidth="201.0" text="Filmy, w których aktor wziął udział :" />
+      <JFXButton fx:id="bSzukajAktora" layoutX="397.0" layoutY="46.0" onAction="#wyszukajAktora" text="Szukaj" />
    </children>
 </AnchorPane>
