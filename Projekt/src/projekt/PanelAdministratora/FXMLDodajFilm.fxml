@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="497.0" prefWidth="267.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projekt.PanelAdministratora.FXMLDodajFilmController">
+<AnchorPane id="AnchorPane" prefHeight="497.0" prefWidth="267.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projekt.PanelAdministratora.FXMLDodajFilmController">
    <children>
       <JFXTextField fx:id="txTytulFilmu" labelFloat="true" layoutX="66.0" layoutY="66.0" promptText="Tytuł filmu" />
       <JFXTextField fx:id="txRezyser" labelFloat="true" layoutX="66.0" layoutY="127.0" promptText="Imię i nazwisko reżysera" />
       <JFXTextField fx:id="txDlFilmu" labelFloat="true" layoutX="66.0" layoutY="192.0" promptText="Długość filmu:" />
       <JFXComboBox fx:id="cbGatunek" labelFloat="true" layoutX="66.0" layoutY="255.0" prefHeight="25.0" prefWidth="135.0" promptText="Gatunek" />
-      <JFXButton fx:id="btnAddNew" layoutX="51.0" layoutY="403.0" onMousePressed="#PressedAddNew" prefHeight="41.0" prefWidth="167.0" text="Dodaj nowy film">
+      <JFXButton fx:id="btnAddNew" layoutX="50.0" layoutY="415.0" onMousePressed="#PressedAddNew" prefHeight="41.0" prefWidth="167.0" style="-fx-border-color: #003fff; -fx-border-style: solid;" text="Dodaj nowy film">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>

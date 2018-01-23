@@ -13,12 +13,12 @@
         <URL value="@fxmlwyszukiwarka.css" />
     </stylesheets>
    <children>
-      <JFXButton fx:id="bWybierz" layoutX="51.0" layoutY="192.0" minHeight="40.0" minWidth="100.0" onAction="#wybierz" text="Wybierz" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="50.0">
+      <JFXButton fx:id="bWybierz" layoutX="51.0" layoutY="192.0" minHeight="40.0" minWidth="100.0" onAction="#wybierz" style="-fx-border-style: solid; -fx-border-color: #003fff;" text="Wybierz" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="50.0">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="bAnuluj" layoutX="231.0" layoutY="192.0" minHeight="40.0" minWidth="100.0" onAction="#anuluj" text="Anuluj" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="50.0">
+      <JFXButton fx:id="bAnuluj" layoutX="231.0" layoutY="192.0" minHeight="40.0" minWidth="100.0" onAction="#anuluj" style="-fx-border-style: solid; -fx-border-color: #003fff;" text="Anuluj" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="50.0">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>

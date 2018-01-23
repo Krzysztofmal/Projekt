@@ -32,6 +32,6 @@
         </columns>
       </TableView>
       <Label layoutX="37.0" layoutY="266.0" prefHeight="17.0" prefWidth="201.0" text="Filmy, w których aktor wziął udział :" />
-      <JFXButton fx:id="bSzukajAktora" layoutX="397.0" layoutY="46.0" onAction="#wyszukajAktora" text="Szukaj" />
+      <JFXButton fx:id="bSzukajAktora" layoutX="397.0" layoutY="46.0" onAction="#wyszukajAktora" prefHeight="25.0" prefWidth="88.0" style="-fx-border-color: #003fff; -fx-border-style: solid;" text="Szukaj" />
    </children>
 </AnchorPane>

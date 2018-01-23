@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="457.0" prefWidth="587.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projekt.PanelAdministratora.FXMLPanelAdministratoraController">
+<AnchorPane id="AnchorPane" prefHeight="457.0" prefWidth="587.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projekt.PanelAdministratora.FXMLPanelAdministratoraController">
     <stylesheets>
         <URL value="@fxmlpaneladministratora.css" />
     </stylesheets>
@@ -38,19 +37,19 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnDelete" layoutX="14.0" layoutY="329.0" onMousePressed="#PressedDelete" prefHeight="50.0" prefWidth="147.0" text="Usuń wybrany film">
+      <JFXButton fx:id="btnDelete" layoutX="14.0" layoutY="329.0" onMousePressed="#PressedDelete" prefHeight="50.0" prefWidth="147.0" style="-fx-border-style: solid; -fx-border-color: #003fff;" text="Usuń wybrany film">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></JFXButton>
-      <JFXButton fx:id="btnSzczegoly" layoutX="218.0" layoutY="329.0" onMousePressed="#PressedSzczegoly" prefHeight="50.0" prefWidth="147.0" text="Szczegóły">
+      <JFXButton fx:id="btnSzczegoly" layoutX="218.0" layoutY="329.0" onMousePressed="#PressedSzczegoly" prefHeight="50.0" prefWidth="147.0" style="-fx-border-style: solid; -fx-border-color: #003fff;" text="Szczegóły">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></JFXButton>
-      <JFXButton fx:id="btnAdd" layoutX="417.0" layoutY="329.0" onMousePressed="#PressedAdd" prefHeight="50.0" prefWidth="147.0" text="Dodaj film">
+      <JFXButton fx:id="btnAdd" layoutX="417.0" layoutY="329.0" onMousePressed="#PressedAdd" prefHeight="50.0" prefWidth="147.0" style="-fx-border-style: solid; -fx-border-color: #003fff;" text="Dodaj film">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></JFXButton>
-      <JFXButton fx:id="btnExit" layoutX="434.0" layoutY="405.0" onMousePressed="#PressedExit" prefHeight="50.0" prefWidth="112.0" text="Wyjście">
+      <JFXButton fx:id="btnExit" layoutX="434.0" layoutY="405.0" onMousePressed="#PressedExit" prefHeight="50.0" prefWidth="112.0" style="-fx-border-style: solid; -fx-border-color: #003fff;" text="Wyjście">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></JFXButton>

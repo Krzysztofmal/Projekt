@@ -23,10 +23,10 @@
             <TableColumn fx:id="columnOcena" prefWidth="65.0" text="Ocena" />
         </columns>
       </TableView>
-      <JFXButton fx:id="bSzczegoly" layoutX="249.0" layoutY="362.0" onAction="#szczegoly" prefHeight="60.0" prefWidth="150.0" text="Szczegóły filmu">
+      <JFXButton fx:id="bSzczegoly" layoutX="249.0" layoutY="362.0" onAction="#szczegoly" prefHeight="60.0" prefWidth="167.0" style="-fx-border-style: solid; -fx-border-color: #003fff;" text="Szczegóły filmu">
          <font>
             <Font name="System Bold" size="17.0" />
          </font></JFXButton>
-      <JFXButton fx:id="bSzukaj" layoutX="283.0" layoutY="36.0" onAction="#wyszukajFilmy" text="Wyszukaj" />
+      <JFXButton fx:id="bSzukaj" layoutX="283.0" layoutY="36.0" onAction="#wyszukajFilmy" style="-fx-border-color: #003fff; -fx-border-style: solid;" text="Wyszukaj" />
    </children>
 </AnchorPane>

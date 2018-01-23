@@ -32,7 +32,7 @@
          </font>
       </Label>
       <Label fx:id="lOpis" layoutX="43.0" layoutY="338.0" prefHeight="91.0" prefWidth="341.0" text="Opis..." wrapText="true" />
-      <JFXButton fx:id="bOcen" layoutX="411.0" layoutY="338.0" onAction="#ocen" prefHeight="91.0" prefWidth="174.0" text="Oceń">
+      <JFXButton fx:id="bOcen" layoutX="411.0" layoutY="338.0" onAction="#ocen" prefHeight="91.0" prefWidth="174.0" style="-fx-border-style: solid; -fx-border-color: #003fff;" text="Oceń">
          <font>
             <Font name="System Bold" size="29.0" />
          </font>
